@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap" rel="stylesheet">
+    <title>STATUS | KIIT E-Cell</title>
+    <style>
+        body {
+            background: #a8ff78;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #78ffd6, #a8ff78);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .head {
+            height: 10vh;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 20px;
+        }
+
+        .form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            color: white;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 40px;
+            letter-spacing: 5px;
+        }
+
+        h3 {
+            letter-spacing: 2px;
+        }
+
+        form {
+            background-color: #26de81;
+            padding: 50px;
+            border-radius: 10px;
+            -webkit-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        form h3 {
+            text-align: center;
+        }
+
+        input {
+            height: 20px;
+            text-decoration: none;
+            background-color: transparent;
+            border: 1px solid white;
+            padding: 10px;
+            outline: none;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        input:focus,
+        button:focus {
+            outline: none;
+        }
+
+        input[type=submit] {
+            margin-top: 20px;
+            width: 100%;
+            border: none;
+            height: 45px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 19px;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: 500ms;
+        }
+
+        .home button {
+            border: none;
+            height: 45px;
+            width: 190px;
+            /* background: #26de81; */
+            background: transparent;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 19px;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: 500ms;
+        }
+
+        input[type=submit]:hover {
+            color: white;
+            border: 1px solid black;
+        }
+
+        .home button:hover {
+            color: white;
+            border: 1px solid black;
+            transform: scale(1.1);
+        }
+
+        .home {
+            margin-top: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <h1>CHECK STATUS</h1>
+    </div>
+    <div class="form">
+        <form action="/status" method="POST">
+            <h3>ROLL NO</h3>
+            <input type="number" name="roll" autocomplete="off" required>
+            <h3>UNIQUE ID</h3>
+            <input type="text" name="uid" autocomplete="off" required><br>
+            <input type="submit" value="SEARCH">
+        </form>
+    </div>
+    <div class="home">
+        <button onclick="window.location.href='/'">GO HOME</button>
+    </div>
+</body>
+
+</html>

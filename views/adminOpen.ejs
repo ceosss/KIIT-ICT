@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/0c6b5a74b9.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap" rel="stylesheet">
+    <title>Open Problems | KIIT E-Cell</title>
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: #a8ff78;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #78ffd6, #a8ff78);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        div {
+            /* border: 2px solid red; */
+            margin: 0px 7px;
+            padding: 5px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 25px;
+            border: none;
+        }
+
+        .complaint {
+            /* width: 45%; */
+            /* background: lightgray;
+            box-shadow: 2px 2px 2px 2px gray;
+            border-radius: 10px; */
+            border-radius: 10px;
+            background: white;
+            -webkit-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .nrp *,
+        .lu *,
+        .problem *,
+        .status *,
+        .sms * {
+            margin-left: 20px;
+        }
+
+        .status a {
+            text-decoration: none;
+            border: 1px solid black;
+            padding: 5px;
+            font-weight: bold;
+            color: #40407a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 500ms;
+        }
+
+        .status a:hover {
+            color: #4cd137;
+        }
+
+        .sms a {
+            margin-left: -18px;
+            padding: 0px;
+        }
+
+        .sms a i {
+            color: black;
+        }
+
+        .sms>i {
+            color: gray;
+            margin-left: 2px;
+        }
+
+        .problem p {
+            margin-top: 6px;
+            margin-bottom: 0px;
+            font-weight: bolder;
+            text-transform: uppercase;
+            color: #f53b57;
+        }
+
+        .input {
+            margin: 20px;
+        }
+
+        .head {
+            text-align: center;
+        }
+
+        .head h1 {
+            font-weight: 800;
+            font-size: 40px;
+            letter-spacing: 5px;
+        }
+
+
+        .input {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        input {
+            background: transparent;
+            margin-bottom: 20px;
+            margin-top: 5px;
+            text-decoration: none;
+            border: 1px solid white;
+            padding: 10px;
+            height: 15px;
+            width: 300px;
+            text-align: center;
+            color: black;
+            font-size: 15px;
+
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        @media screen and (max-width: 1100px) {
+            .row {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                grid-gap: 25px;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="head">
+        <h1>OPEN PROBLEMS</h1>
+    </div>
+
+    <form action="" onsubmit="event.preventDefault();" id="form">
+        <div class="input">
+            Enter UID : <input id="input" type="text" onkeyup="inputFunc()" autocomplete="off">
+            Enter Roll Number : <input id="rollno" type="number" onkeyup="rollFunc()" autocomplete="off">
+        </div>
+        <div class="row">
+            <% for(var i=user.length-1;i>=0;i--){ %>
+            <% if(!user[i].status){ %>
+            <div class="complaint">
+                <div class="nrp">
+                    <b>Name : </b><%= user[i].name %>
+                    <b>Roll : </b><span id="roll"><%= user[i].roll %></span>
+                    <b>Phone : </b><%= user[i].phone %>
+                </div>
+                <div class="lu">
+                    <b>Laptop Serial Number : </b> <%= user[i].laptopSno %>
+                    <b>Unique Id : </b> <span><%= user[i].uid %></span>
+                </div>
+                <div class="problem">
+                    <b>Problem : </b>
+                    <p><%= user[i].problem %></p>
+                </div>
+                <div class="sms">
+                    <b>SMS : </b>
+                    <b>SMS-1 : </b>
+                    <% if(!user[i].sms1){ %>
+                    <a href="/admin/sendsms/<%=user[i].uid%>/<%=user[i].phone%>/<%=user[i].laptopSno%>/1"><i
+                            class="fas fa-envelope fa-lg"></i></a>
+                    <% }else{%>
+                    <i class="far fa-envelope fa-lg"></i>
+                    <% }%>
+                    <b>SMS-2 : </b>
+                    <% if(!user[i].sms2){ %>
+                    <a href="/admin/sendsms/<%=user[i].uid%>/<%=user[i].phone%>/<%=user[i].laptopSno%>/2"><i
+                            class="fas fa-envelope fa-lg"></i></a>
+                    <% }else{%>
+                    <i class="far fa-envelope fa-lg"></i>
+                    <% }%>
+                    <b>SMS-3 : </b>
+                    <% if(!user[i].sms3){ %>
+                    <a href="/admin/sendsms/<%=user[i].uid%>/<%=user[i].phone%>/<%=user[i].laptopSno%>/3"><i
+                            class="fas fa-envelope fa-lg"></i></a>
+                    <% }else{%>
+                    <i class="far fa-envelope fa-lg fa-lg"></i>
+                    <% }%>
+                </div>
+
+                <div class="status">
+                    <b>Status : </b>
+                    <%  if(user[i].status){ %>
+                    <font style="margin-left: 0px; font-weight: bold" color="#4cd137">
+                        Delivered
+                    </font>
+                    <%}else{%>
+                    <font style="margin-left: 0px; font-weight: bold" color="#ff9f1a">
+                        Undelivered
+                    </font>
+                    <%}%>
+                <b>Date : </b> <%= user[i].date %>
+                    <b>Time : </b> <%= user[i].time %>
+                    <!-- <i>( Submission )</i> -->
+                    <a href="/admin/deliver/<%= user[i].uid %>">Deliver</a>
+                </div>
+
+            </div>
+            <% } %>
+            <% } %>
+        </div>
+    </form>
+
+    <script>
+        function inputFunc() {
+            var input = "Unique Id : " +
+                document.getElementById("input").value.toUpperCase();
+            // console.log("input:-" + input);
+            var complaints = document.getElementsByClassName("complaint");
+
+            for (var i = 0; i < complaints.length; i++) {
+                var inner = "Unique Id : " + complaints[i].getElementsByTagName("span")[1].innerText;
+                // console.log("inner:-" + inner);
+                if (inner.indexOf(input) > -1) {
+                    complaints[i].style.display = "";
+                } else {
+                    complaints[i].style.display = "none";
+                }
+            }
+        }
+
+        function rollFunc() {
+            var input = "Roll : " +
+                document.getElementById("rollno").value.toUpperCase();
+            // console.log("input:-" + input);
+            var complaints = document.getElementsByClassName("complaint");
+
+            for (var i = 0; i < complaints.length; i++) {
+                var inner = "Roll : " + complaints[i].getElementsByTagName("span")[0].innerText;
+                // console.log("inner:-" + inner);
+                if (inner.indexOf(input) > -1) {
+                    complaints[i].style.display = "";
+                } else {
+                    complaints[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

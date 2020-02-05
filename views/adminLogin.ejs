@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap" rel="stylesheet">
+    <title>Admin Login | KIIT E-Cell</title>
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: #a8ff78;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #78ffd6, #a8ff78);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        h1 {
+            font-weight: 800;
+            letter-spacing: 5px;
+            color: black;
+            font-size: 40px;
+        }
+
+        .head {
+            height: 10vh;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 20px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+
+
+        .box {
+
+            background-color: #26de81;
+            padding: 50px;
+            border-radius: 10px;
+            text-align: center;
+            -webkit-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type=submit]:hover {
+            color: white;
+            border: 1px solid black;
+        }
+
+        form h3 {
+            text-align: center;
+        }
+
+        input {
+            height: 20px;
+            text-decoration: none;
+            background-color: transparent;
+            border: 1px solid white;
+            padding: 10px;
+            outline: none;
+            font-size: 15px;
+            text-align: center;
+            width: 72%;
+        }
+
+        input:focus,
+        button:focus {
+            outline: none;
+        }
+
+        input[type=submit] {
+            margin-top: 20px;
+            width: 80%;
+            border: none;
+            height: 45px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 19px;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: 500ms;
+        }
+
+        h3 {
+            letter-spacing: 2px;
+            color: white;
+        }
+
+        .home button {
+            border: none;
+            height: 45px;
+            width: 190px;
+            /* background: #26de81; */
+            background: transparent;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 19px;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: 500ms;
+        }
+
+        .home button:hover {
+            color: white;
+            border: 1px solid black;
+            transform: scale(1.1);
+        }
+
+        .home {
+            margin-top: 0px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <h1>ADMIN LOGIN</h1>
+    </div>
+    <div class="main">
+        <div class="box">
+            <form action="/login" method="POST">
+                <h3>USERNAME</h3>
+                <input type="text" name="username" autocomplete="off">
+                <h3>PASSWORD</h3>
+                <input type="password" name="password" autocomplete="off">
+                <input type="submit" value="LOGIN">
+            </form>
+        </div>
+    </div>
+    <div class="home">
+        <button onclick="window.location.href='/'">GO HOME</button>
+    </div>
+</body>
+
+</html>
