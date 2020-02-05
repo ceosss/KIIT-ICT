@@ -104,6 +104,14 @@ passport.use(
 
 //HOME ROUTE
 app.get("/", function(req, res) {
+  // admin.create({ username: "admin", password: "admin" }, function(err, admin) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log(admin);
+  //   }
+  // });
+
   res.render("home.ejs");
 });
 

@@ -149,6 +149,9 @@
                 grid-gap: 25px;
                 border: none;
             }
+            .status a {
+          line-height: 45px;
+        }
         }
     </style>
 </head>
@@ -183,21 +186,24 @@
                     <b>SMS : </b>
                     <b>SMS-1 : </b>
                     <% if(!user[i].sms1){ %>
-                    <a href=""><i class="fas fa-envelope fa-lg"></i></a>
+                    <a href="/admin/sendsms/<%=user[i].uid%>/<%=user[i].phone%>/<%=user[i].laptopSno%>/1"><i
+                            class="fas fa-envelope fa-lg"></i></a>
                     <% }else{%>
                     <i class="far fa-envelope fa-lg"></i>
                     <% }%>
                     <b>SMS-2 : </b>
                     <% if(!user[i].sms2){ %>
-                    <a href=""><i class="fas fa-envelope fa-lg"></i></a>
+                    <a href="/admin/sendsms/<%=user[i].uid%>/<%=user[i].phone%>/<%=user[i].laptopSno%>/2"><i
+                            class="fas fa-envelope fa-lg"></i></a>
                     <% }else{%>
                     <i class="far fa-envelope fa-lg"></i>
                     <% }%>
                     <b>SMS-3 : </b>
-                    <% if(!user[i].sms2){ %>
-                    <a href=""><i class="fas fa-envelope fa-lg"></i></a>
+                    <% if(!user[i].sms3){ %>
+                    <a href="/admin/sendsms/<%=user[i].uid%>/<%=user[i].phone%>/<%=user[i].laptopSno%>/3"><i
+                            class="fas fa-envelope fa-lg"></i></a>
                     <% }else{%>
-                    <i class="far fa-envelope fa-lg" fa-lg></i>
+                    <i class="far fa-envelope fa-lg fa-lg"></i>
                     <% }%>
                 </div>
 

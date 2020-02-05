@@ -1,103 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap"
+      rel="stylesheet"
+    />
     <title>WRONG PAGE | KIIT-ECELL</title>
     <style>
-        * {
-            font-family: 'Montserrat', sans-serif;
-        }
+      * {
+        font-family: "Montserrat", sans-serif;
+      }
 
-        body {
-            background: #a8ff78;
-            /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #78ffd6, #a8ff78);
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      body {
+        background: #a8ff78;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #78ffd6, #a8ff78);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
 
-        }
+      h1 {
+        font-weight: 800;
+        letter-spacing: 5px;
+        color: black;
+        font-size: 40px;
+      }
 
-        h1 {
-            font-weight: 800;
-            letter-spacing: 5px;
-            color: black;
-            font-size: 40px;
-        }
+      .head {
+        height: 10vh;
+        text-align: center;
+        margin-top: 50px;
+        font-size: 20px;
+      }
 
-        .head {
-            height: 10vh;
-            text-align: center;
-            margin-top: 50px;
-            font-size: 20px;
-        }
+      .home button {
+        border: none;
+        height: 45px;
+        width: 190px;
+        /* background: #26de81; */
+        background: transparent;
+        font-weight: bold;
+        letter-spacing: 2px;
+        font-size: 19px;
+        border: 1px solid white;
+        cursor: pointer;
+        transition: 500ms;
+      }
 
-        .home button {
-            border: none;
-            height: 45px;
-            width: 190px;
-            /* background: #26de81; */
-            background: transparent;
-            font-weight: bold;
-            letter-spacing: 2px;
-            font-size: 19px;
-            border: 1px solid white;
-            cursor: pointer;
-            transition: 500ms;
-        }
+      .home button:hover {
+        color: white;
+        border: 1px solid black;
+        transform: scale(1.1);
+      }
 
-        .home button:hover {
-            color: white;
-            border: 1px solid black;
-            transform: scale(1.1);
-        }
+      .home {
+        margin-top: 100px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+      }
 
-        .home {
-            margin-top: 100px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-        }
+      .image {
+        /* height: 40vh; */
+        text-align: center;
+        /* margin-top: 100px; */
+      }
 
+      .image h1 {
+        font-size: 280px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        letter-spacing: 30px;
+        color: #eb4d4b;
+      }
+
+      .image p {
+        font-size: 25px;
+        margin-top: 0px;
+        letter-spacing: 8px;
+        font-weight: 800;
+        color: #f5f6fa;
+      }
+      @media screen and (max-width: 600px) {
         .image {
-            /* height: 40vh; */
-            text-align: center;
-            /* margin-top: 100px; */
+          text-align: center;
         }
-
-        .image h1 {
-            font-size: 280px;
-            margin-top: 0px;
-            margin-bottom: 10px;
-            letter-spacing: 30px;
-            color: #eb4d4b;
+        .image > h1 {
+          font-size: 130px;
+          margin-top: 30px;
+          text-align: center;
         }
-
-        .image p {
-            font-size: 25px;
-            margin-top: 0px;
-            letter-spacing: 8px;
-            font-weight: 800;
-            color: #f5f6fa;
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="head">
-        <h1>WRONG PAGE REQUESTED</h1>
+      <h1>WRONG PAGE REQUESTED</h1>
     </div>
     <div class="image">
-        <h1>400</h1>
-        <p>BAD REQUEST</p>
+      <h1>400</h1>
+      <p>BAD REQUEST</p>
     </div>
     <div class="home">
-        <button onclick="window.location.href='/'">GO HOME</button>
+      <button onclick="window.location.href='/'">GO HOME</button>
     </div>
-</body>
-
+  </body>
 </html>

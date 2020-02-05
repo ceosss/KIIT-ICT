@@ -1,108 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap"
+      rel="stylesheet"
+    />
 
     <title>HOME | KIIT E-Cell</title>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Montserrat', sans-serif;
-            background: #a8ff78;
-            /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #78ffd6, #a8ff78);
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            overflow: hidden;
-        }
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: "Montserrat", sans-serif;
+        background: #a8ff78;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #78ffd6, #a8ff78);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        overflow: hidden;
+      }
 
-        .head {
-            height: 10vh;
-            text-align: center;
-            display: flex;
-            justify-content: center;
+      .head {
+        height: 10vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+      }
 
-        }
+      h1 {
+        font-weight: 800;
+        font-size: 50px;
+        letter-spacing: 10px;
+      }
 
-        h1 {
-            font-weight: 800;
-            font-size: 50px;
-            letter-spacing: 10px;
-        }
+      .bod {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+      }
 
-        .bod {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 90vh;
-        }
+      .main {
+        background-color: #26de81;
+        padding: 50px;
+        border-radius: 10px;
+        -webkit-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+      }
 
+      .main div {
+        border: 1px solid black;
+        margin: 20px;
+        color: white;
+        padding: 20px 10px;
+        height: 20px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 500ms;
+      }
+
+      .main div:hover {
+        border: 1px solid white;
+        color: black;
+        transform: scale(1.1);
+      }
+
+      @media screen and (max-width: 600px) {
         .main {
-            background-color: #26de81;
-            padding: 50px;
-            border-radius: 10px;
-            -webkit-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
-            box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+          width: 60%;
         }
-
         .main div {
-            border: 1px solid black;
-            margin: 20px;
-            color: white;
-            padding: 20px 10px;
-            height: 20px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 20px;
-            cursor: pointer;
-            transition: 500ms;
+          font-size: 18px;
+          padding-bottom: 40px;
+          width: 90%;
+          margin: 0;
+          margin-top: 10px;
         }
-
         .main div:hover {
-            border: 1px solid white;
-            color: black;
-            transform: scale(1.1);
+          border: 1px solid white;
+          color: black;
+          transform: scale(1.01);
         }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="head">
-        <h1>KIIT-ICT</h1>
+      <h1>KIIT-ICT</h1>
     </div>
     <div class="bod">
-        <div class="main">
-            <div onclick="complaintClick();" class="complaint">
-                REGISTER A COMPLAINT
-            </div>
-            <div onclick="statusClick();" class="status">
-                CHECK COMPLAINT STATUS
-            </div>
+      <div class="main">
+        <div onclick="complaintClick();" class="complaint">
+          REGISTER A COMPLAINT
         </div>
+        <div onclick="statusClick();" class="status">
+          CHECK COMPLAINT STATUS
+        </div>
+      </div>
     </div>
 
-
-
-
     <script>
-        function complaintClick() {
-            console.log("COMPLAINT CLICKED");
-            window.location.href = "/complaint";
-        }
+      function complaintClick() {
+        console.log("COMPLAINT CLICKED");
+        window.location.href = "/complaint";
+      }
 
-        function statusClick() {
-            console.log("STATUS CLICKED");
-            window.location.href = "/status";
-        }
+      function statusClick() {
+        console.log("STATUS CLICKED");
+        window.location.href = "/status";
+      }
     </script>
-
-</body>
-
+  </body>
 </html>

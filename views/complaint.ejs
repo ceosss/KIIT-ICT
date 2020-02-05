@@ -1,156 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap" rel="stylesheet">
-    <title>COMPLAINT | KIIT E-Cell </title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap"
+      rel="stylesheet"
+    />
+    <title>COMPLAINT | KIIT E-Cell</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            /* background: darkgray; */
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        /* background: darkgray; */
+        color: white;
+        font-family: "Montserrat", sans-serif;
+      }
 
-        body {
-            background: #a8ff78;
-            /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #78ffd6, #a8ff78);
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      body {
+        background: #a8ff78;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #78ffd6, #a8ff78);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
 
-        }
+      h1 {
+        font-weight: 800;
+        letter-spacing: 5px;
+        color: black;
+        font-size: 40px;
+      }
 
-        h1 {
-            font-weight: 800;
-            letter-spacing: 5px;
-            color: black;
-            font-size: 40px;
-        }
+      h3 {
+        letter-spacing: 2px;
+      }
 
-        h3 {
-            letter-spacing: 2px;
-        }
+      .head {
+        text-align: center;
+        margin: 20px;
+      }
 
-        .head {
-            text-align: center;
-            margin: 20px;
-        }
+      .formdiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
 
-        .formdiv {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+      form {
+        background-color: #26de81;
+        padding: 10px 100px;
+        border-radius: 10px;
+        -webkit-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+      }
 
-        }
+      input,
+      textarea {
+        background: transparent;
+        margin-bottom: 20px;
+        margin-top: 5px;
+        text-decoration: none;
+        border: 1px solid white;
+        padding: 10px;
+        height: 15px;
+        width: 300px;
+        text-align: center;
+        color: black;
+        font-size: 15px;
+      }
 
+      input:focus,
+      textarea:focus {
+        outline: none;
+      }
+
+      textarea {
+        height: 30px;
+      }
+
+      input[type="submit"] {
+        height: 45px;
+        width: 322px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        font-size: 19px;
+        cursor: pointer;
+        transition: 500ms;
+      }
+
+      input[type="submit"]:hover {
+        color: white;
+        border: 1px solid black;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[name="phone"]:active,
+      input[name="phone"]:focus {
+        background: none;
+      }
+
+      @media screen and (max-width: 600px) {
         form {
-            background-color: #26de81;
-            padding: 10px 100px;
-            border-radius: 10px;
-            -webkit-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
-            box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+          /* width: 40%; */
+          text-align: center;
         }
-
+        form h3 {
+          text-align: center;
+        }
         input,
         textarea {
-            background: transparent;
-            margin-bottom: 20px;
-            margin-top: 5px;
-            text-decoration: none;
-            border: 1px solid white;
-            padding: 10px;
-            height: 15px;
-            width: 300px;
-            text-align: center;
-            color: black;
-            font-size: 15px;
-
+          width: 250px;
+          margin-left: 0px;
+          padding-left: 0px;
         }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-        }
-
-        textarea {
-            height: 30px;
-        }
-
-        input[type=submit] {
-            height: 45px;
-            width: 322px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            font-size: 19px;
-            cursor: pointer;
-            transition: 500ms;
-        }
-
-        input[type=submit]:hover {
-            color: white;
-            border: 1px solid black;
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        input[name=phone]:active,
-        input[name=phone]:focus {
-            background: none;
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="head">
-        <h1>REGISTER A COMPLAINT</h1>
+      <h1>REGISTER A COMPLAINT</h1>
     </div>
     <div class="formdiv">
-        <form action="/complaint/<%=uid%>" method="POST">
-            <div class="name">
-                <h3>NAME </h3><input type="text" name="name" autocomplete="off" required><br>
-            </div>
-            <div class="roll">
-                <h3>ROLL NO.</h3><input type="number" name="roll" autocomplete="off" required><br>
-            </div>
-            <div class="phone">
-                <h3>PHONE NO.</h3><input type="number" name="phon" autocomplete="off" required><br>
-            </div>
-            <div class="sno">
-                <h3>LAPTOP SERIAL NUMBER</h3><input type="text" name="laptopSno" autocomplete="off" required><br>
-            </div>
-            <div class="uid">
-                <h3>UNIQUE ID</h3><input type="text" name="uid" value="<%= uid %>" id="uid" autocomplete="off"
-                    required><br>
-            </div>
-            <div class="prov">
-                <h3>PROBLEM</h3><textarea rows="8" name="problem" autocomplete="off"
-                    required>Explain the Problem in brief.</textarea><br>
-            </div>
-            <div class="sub">
-                <input type="submit" value="REGISTER">
-            </div>
-
-        </form>
+      <form action="/complaint/<%=uid%>" method="POST">
+        <div class="name">
+          <h3>NAME</h3>
+          <input type="text" name="name" autocomplete="off" required /><br />
+        </div>
+        <div class="roll">
+          <h3>ROLL NO.</h3>
+          <input type="number" name="roll" autocomplete="off" required /><br />
+        </div>
+        <div class="phone">
+          <h3>PHONE NO.</h3>
+          <input type="number" name="phon" autocomplete="off" required /><br />
+        </div>
+        <div class="sno">
+          <h3>LAPTOP SERIAL NUMBER</h3>
+          <input
+            type="text"
+            name="laptopSno"
+            autocomplete="off"
+            required
+          /><br />
+        </div>
+        <div class="uid">
+          <h3>UNIQUE ID</h3>
+          <input
+            type="text"
+            name="uid"
+            value="<%= uid %>"
+            id="uid"
+            autocomplete="off"
+            required
+          /><br />
+        </div>
+        <div class="prov">
+          <h3>PROBLEM</h3>
+          <textarea rows="8" name="problem" autocomplete="off" required>
+Explain the Problem in brief.</textarea
+          ><br />
+        </div>
+        <div class="sub">
+          <input type="submit" value="REGISTER" />
+        </div>
+      </form>
     </div>
 
-
-
-
     <script>
-        document.getElementById("uid").disabled = true;
+      document.getElementById("uid").disabled = true;
     </script>
-</body>
-
+  </body>
 </html>
