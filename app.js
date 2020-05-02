@@ -39,15 +39,12 @@ const ur =
   process.env.PASSWORD +
   "@students-s3blg.mongodb.net/kiitict";
 
-mongoose.connect(
-  "mongodb+srv://sswarajsamant:" +
-    process.env.PASSWORD +
-    "@students-s3blg.mongodb.net/kiitict",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+const url = process.env.URL;
+
+mongoose.connect(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 //ADMIN SCHEMA
 var adminSchema = new mongoose.Schema({
