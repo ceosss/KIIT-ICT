@@ -10,7 +10,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var cookieSession = require("cookie-session");
 var myModule = require("./export");
-const gcon = myModule.mongoc();
+const gcon = myModule.connectd;
 
 //SETTING COOKIE-SESSION
 app.use(
