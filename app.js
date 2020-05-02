@@ -14,35 +14,35 @@ var cookieSession = require("cookie-session");
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: ["secret"]
+    keys: ["secret"],
   })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-//SERIALIZIING
-passport.serializeUser(function(user, cb) {
+//SERIALIZIING USER
+passport.serializeUser(function (user, cb) {
   cb(null, user.id);
 });
 
-//DESERIALIZING
-passport.deserializeUser(function(id, cb) {
-  admin.findById(id, function(err, user) {
+//DESERIALIZING USER
+passport.deserializeUser(function (id, cb) {
+  admin.findById(id, function (err, user) {
     cb(err, user);
   });
 });
 
 //CONNECTING DB
-mongoose.connect("mongodb://localhost/kiitict", {
+mongoose.connect(process.env.CONNECT, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 //ADMIN SCHEMA
 var adminSchema = new mongoose.Schema({
   username: String,
-  password: String
+  password: String,
 });
 
 var admin = mongoose.model("admin", adminSchema);
@@ -62,7 +62,7 @@ var userSchema = new mongoose.Schema({
   date: String,
   time: String,
   ddate: String,
-  dtime: String
+  dtime: String,
 });
 
 var user = mongoose.model("user", userSchema);
@@ -80,8 +80,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //PASSPORT LOCAL AUTHENTICATION
 passport.use(
-  new LocalStrategy(function(username, password, done) {
-    admin.findOne({ username: username }, function(err, response) {
+  new LocalStrategy(function (username, password, done) {
+    admin.findOne({ username: username }, function (err, response) {
       if (err) {
         console.log(err);
         return done(err);
@@ -103,7 +103,7 @@ passport.use(
 //GET REQUESTS
 
 //HOME ROUTE
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   // admin.create({ username: "admin", password: "admin" }, function(err, admin) {
   //   if (err) {
   //     console.log(err);
@@ -116,7 +116,7 @@ app.get("/", function(req, res) {
 });
 
 //STATUS ROUTE
-app.get("/status", function(req, res) {
+app.get("/status", function (req, res) {
   res.render("status.ejs");
 });
 
@@ -151,7 +151,7 @@ app.get("/status", function(req, res) {
 //   });
 // });
 
-app.get("/complaint", isAuthenticated, async function(req, res) {
+app.get("/complaint", isAuthenticated, async function (req, res) {
   var cuid = "";
   var dup = 1;
   while (dup == 1) {
@@ -168,14 +168,14 @@ app.get("/complaint", isAuthenticated, async function(req, res) {
 });
 
 //REGISTERED SECCESSFULLY ROUTE
-app.get("/complaintReg/:uid", isAuthenticated, function(req, res) {
+app.get("/complaintReg/:uid", isAuthenticated, function (req, res) {
   var uid = req.params.uid;
   console.log("Complaint Resgistered Successfully : " + uid);
   res.render("complaintReg.ejs", { uid: uid });
 });
 
 //ADMIN LOGIN ROUTE
-app.get("/login", function(req, res) {
+app.get("/login", function (req, res) {
   if (req.user) {
     res.redirect("/admin");
   } else {
@@ -184,18 +184,18 @@ app.get("/login", function(req, res) {
 });
 
 //ADMIN LOGOUT ROUTE
-app.get("/logout", function(req, res) {
+app.get("/logout", function (req, res) {
   req.logout();
   res.redirect("/");
 });
 
 //ADMIN HOME ROUTE
-app.get("/admin", isAuthenticated, function(req, res) {
+app.get("/admin", isAuthenticated, function (req, res) {
   res.render("admin.ejs");
 });
 
 //DELIVER ROUTE
-app.get("/admin/deliver/:uid", isAuthenticated, function(req, res) {
+app.get("/admin/deliver/:uid", isAuthenticated, function (req, res) {
   var uid = req.params.uid;
   var dnt = new Date();
   var dd = dnt.toISOString().slice(0, 10);
@@ -203,7 +203,7 @@ app.get("/admin/deliver/:uid", isAuthenticated, function(req, res) {
   user.findOneAndUpdate(
     { uid: uid },
     { $set: { status: true, ddate: dd, dtime: dt } },
-    function(err, resp) {
+    function (err, resp) {
       if (err) {
         console.log(err);
       } else {
@@ -214,7 +214,7 @@ app.get("/admin/deliver/:uid", isAuthenticated, function(req, res) {
 });
 
 //SEND SMS ROUTE
-app.get("/admin/sendsms/:uid/:phone/:sno/:no", isAuthenticated, function(
+app.get("/admin/sendsms/:uid/:phone/:sno/:no", isAuthenticated, function (
   req,
   res
 ) {
@@ -229,14 +229,14 @@ app.get("/admin/sendsms/:uid/:phone/:sno/:no", isAuthenticated, function(
     uid +
     " is ready for pickup from KIIT ICT.";
   var par = {
-    originator: "+918756432004",
+    originator: process.env.ORIGINATOR,
     recipients: [phone],
-    body: msg
+    body: msg,
   };
-  messageBird.messages.create(par, function(err, response) {
+  messageBird.messages.create(par, function (err, response) {
     if (err) {
       console.log(err);
-      req.redirect("/admin");
+      res.redirect("/allProb");
     } else {
       console.log(response);
       var update;
@@ -247,7 +247,7 @@ app.get("/admin/sendsms/:uid/:phone/:sno/:no", isAuthenticated, function(
       } else if (no == 3) {
         update = { sms3: true };
       }
-      user.findOneAndUpdate({ uid: uid }, { $set: update }, function(
+      user.findOneAndUpdate({ uid: uid }, { $set: update }, function (
         err,
         resp
       ) {
@@ -262,8 +262,8 @@ app.get("/admin/sendsms/:uid/:phone/:sno/:no", isAuthenticated, function(
 });
 
 //ADMIN OPEN REQUESTS ROUTE
-app.get("/admin/open", isAuthenticated, function(req, res) {
-  user.find({}, function(err, user) {
+app.get("/admin/open", isAuthenticated, function (req, res) {
+  user.find({}, function (err, user) {
     if (err) {
       console.log(err);
     } else {
@@ -274,8 +274,8 @@ app.get("/admin/open", isAuthenticated, function(req, res) {
 });
 
 //ADMIN CLOSED REQUESTS ROUTE
-app.get("/admin/closed", isAuthenticated, function(req, res) {
-  user.find({}, function(err, user) {
+app.get("/admin/closed", isAuthenticated, function (req, res) {
+  user.find({}, function (err, user) {
     if (err) {
       console.log(err);
     } else {
@@ -286,8 +286,8 @@ app.get("/admin/closed", isAuthenticated, function(req, res) {
 });
 
 //SEARCH ROUTE
-app.get("/allProb", isAuthenticated, function(req, res) {
-  user.find({}, function(err, user) {
+app.get("/allProb", isAuthenticated, function (req, res) {
+  user.find({}, function (err, user) {
     if (err) {
       console.log(err);
     } else {
@@ -300,7 +300,7 @@ app.get("/allProb", isAuthenticated, function(req, res) {
 //POST ROUTES
 
 //REGISTERING COMPLAINT ROUTE
-app.post("/complaint/:uid", isAuthenticated, function(req, res) {
+app.post("/complaint/:uid", isAuthenticated, function (req, res) {
   var uid = req.params.uid,
     name = req.body.name,
     roll = req.body.roll,
@@ -329,10 +329,10 @@ app.post("/complaint/:uid", isAuthenticated, function(req, res) {
     sms3: false,
     status: false,
     date: date,
-    time: time
+    time: time,
   };
 
-  user.create(register, function(err, register) {
+  user.create(register, function (err, register) {
     if (err) {
       console.log(err);
     } else {
@@ -343,10 +343,10 @@ app.post("/complaint/:uid", isAuthenticated, function(req, res) {
 });
 
 //FINDING STATUS
-app.post("/status", function(req, res) {
+app.post("/status", function (req, res) {
   var uid = req.body.uid;
   var roll = req.body.roll;
-  user.findOne({ uid: uid, roll: roll }, function(err, resp) {
+  user.findOne({ uid: uid, roll: roll }, function (err, resp) {
     if (err) {
       console.log(err);
     } else {
@@ -359,16 +359,16 @@ app.post("/status", function(req, res) {
 app.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/login" }),
-  function(req, res) {
+  function (req, res) {
     res.redirect("/admin");
   }
 );
 
 //HANDLING ALL WRONG REQUESTS
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.render("wrong.ejs");
 });
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server Started");
 });
