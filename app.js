@@ -34,10 +34,6 @@ passport.deserializeUser(function (id, cb) {
 });
 
 //CONNECTING DB
-const ur =
-  "mongodb+srv://sswarajsamant:" +
-  process.env.PASSWORD +
-  "@students-s3blg.mongodb.net/kiitict";
 
 const url = process.env.KIITICTURL;
 
