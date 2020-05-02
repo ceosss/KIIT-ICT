@@ -36,7 +36,8 @@ passport.deserializeUser(function (id, cb) {
 });
 
 //CONNECTING DB
-mongoose.connect(gcon.mongoc, {
+const ur = `mongodb+srv://sswarajsamant:${process.env.PASSWORD}@students-s3blg.mongodb.net/kiitict`;
+mongoose.connect(ur, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
