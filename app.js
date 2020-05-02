@@ -39,7 +39,7 @@ const ur =
   process.env.PASSWORD +
   "@students-s3blg.mongodb.net/kiitict";
 
-const url = process.env.URL;
+const url = process.env.KIITICTURL;
 
 mongoose.connect(url, {
   useNewUrlParser: true,
