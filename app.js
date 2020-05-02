@@ -9,6 +9,8 @@ var async = require("async");
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var cookieSession = require("cookie-session");
+var myModule = require("./export.js");
+const gcon = myModule.connectd;
 
 //SETTING COOKIE-SESSION
 app.use(
@@ -34,7 +36,7 @@ passport.deserializeUser(function (id, cb) {
 });
 
 //CONNECTING DB
-mongoose.connect(process.env.CONNECT, {
+mongoose.connect(gcon.mongoc, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
