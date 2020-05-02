@@ -359,10 +359,13 @@ app.post("/status", function (req, res) {
 //ADMIN LOGGIN IN
 app.post(
   "/login",
-  passport.authenticate("local", { failureRedirect: "/login" }),
-  function (req, res) {
-    res.redirect("/admin");
-  }
+  passport.authenticate("local", {
+    successRedirect: "/admin",
+    failureRedirect: "/login",
+  })
+  // function (req, res) {
+  //   res.redirect("/admin");
+  // }
 );
 
 //HANDLING ALL WRONG REQUESTS
